@@ -1,0 +1,8 @@
+<!DOCTYPE project>
+<ivy-module version="2.0">
+	<info organisation="" module="" />
+	<configurations defaultconf="default" />
+	<dependencies>
+		<dependency org="javax.servlet" name="servlet-api" rev="2.5" />
+	</dependencies>
+</ivy-module>
