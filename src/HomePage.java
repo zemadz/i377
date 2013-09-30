@@ -16,19 +16,15 @@ public class HomePage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    HttpSession session = request.getSession();
-	    String username = (String)request.getParameter("param");
-	    session.setAttribute("param", username);
+	    String sessionParameter = (String)request.getParameter("param");
+	    if(sessionParameter!=null) {
+	    	session.setAttribute("param", sessionParameter);
+	    }
 	    response.getWriter().println("Hello");
 	    response.getWriter().println(String.format("Your session id is %s", session.getId()));
-	    response.getWriter().println(String.format("Session attribute is %s", username));
+	    response.getWriter().println(String.format("Session attribute is %s", session.getAttribute("param")));
 	    
 	    
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
-	
 	
 }
