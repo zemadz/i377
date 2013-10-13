@@ -5,11 +5,11 @@
 	<property name="classes.dir" location="${build.dir}/classes" />
 	<property name="dir.lib" value="WebContent/WEB-INF/lib" />
 	<property name="webContent.dir" value="WebContent" />
-	
+
 	<property name="ivy.retrieve.pattern" value="${dir.lib}/[artifact]-[type]-[revision].[ext]" />
 	<property name="webContent.dir" location="WebContent" />
 	<property name="war.file" location="webproject.war" />
-	
+
 	<path id="classpath">
 		<fileset dir="lib">
 			<include name="*.jar" />
@@ -23,6 +23,11 @@
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="classpath" />
 		</javac>
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.dir}">
+				<include name="*.sql" />
+			</fileset>
+		</copy>
 	</target>
 
 	<target name="retrieve" description="retreive dependencies">
@@ -34,7 +39,7 @@
 	<target name="war" depends="compile">
 		<war destfile="${war.file}" webxml="${webContent.dir}/WEB-INF/web.xml">
 			<classes dir="${classes.dir}" />
-			<fileset dir="${webContent.dir}" excludes="**/servlet-apijar2.5.jar" />
+			<fileset dir="${webContent.dir}" excludes="**/servlet-api-jar-2.5.jar" />
 		</war>
 	</target>
 
