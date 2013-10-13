@@ -12,6 +12,9 @@
   <listener>
     <listener-class>listeners.SessionCountListener</listener-class>
   </listener>
+  <listener>
+    <listener-class>listeners.MyServletContextListener</listener-class>
+  </listener>
   <servlet>
     <description></description>
     <display-name>HomePage</display-name>

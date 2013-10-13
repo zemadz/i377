@@ -15,8 +15,6 @@ public class SessionCountListener implements HttpSessionListener {
 	@Override
 	public void sessionCreated(HttpSessionEvent arg0) {
 		activeSessionsCount++;
-		SetupDao setup = new SetupDao();
-		setup.createSchema();
 	}
 
 	@Override

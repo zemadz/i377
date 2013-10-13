@@ -12,19 +12,29 @@ import dao.SetupDao;
 
 public class MyServletContextListener implements javax.servlet.ServletContextListener {
 
-	public MyServletContextListener() {
-	}
-
 	public void contextInitialized(ServletContextEvent arg0) {
-		String dbPath = System.getProperty("user.home") + "/i377/db/db.script";
-		if(!new File(dbPath).exists()) {
-			SetupDao dao = new SetupDao();
-			dao.createSchema();
-			dao.insertTestData();
-		}
+//		SetupDao setup = new SetupDao();
+//		if (!setup.tableExists()) {
+//			setup.createSchema();
+//			setup.insertTestData();
+//		}
+//		File file = new File(System.getProperty("user.home"), "/i377/zemadz/db/db.script");
+//		if(!file.getAbsoluteFile().exists()) {
+//			SetupDao setup = new SetupDao();
+//			setup.createSchema();
+//			setup.insertTestData();
+//		}
 	}
 
 	public void contextDestroyed(ServletContextEvent arg0) {
+//		Enumeration<Driver> drivers = DriverManager.getDrivers();
+//		while(drivers.hasMoreElements()) {
+//			try {
+//				DriverManager.deregisterDriver(drivers.nextElement());
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
 	}
 
 }

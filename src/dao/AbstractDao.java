@@ -25,6 +25,24 @@ public abstract class AbstractDao {
 	protected Connection getConnection() {
 		try {
 			connection = DriverManager.getConnection(DB_URL, "sa", "");
+			
+	    	try {
+				DatabaseMetaData meta = connection.getMetaData();
+				ResultSet testRs = meta.getTables(null, null, null, new String[] {"TABLE"});
+				if(testRs.next()) {
+					testRs.close();
+				} else {
+					SetupDao dao = new SetupDao();
+					dao.createSchema();
+					dao.insertTestData();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				connection.close();
+			}
+	    	connection = DriverManager.getConnection(DB_URL, "sa", "");
+	    	
 			return connection;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
