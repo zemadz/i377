@@ -35,6 +35,7 @@ public abstract class AbstractDao {
 					SetupDao dao = new SetupDao();
 					dao.createSchema();
 					dao.insertTestData();
+					testRs.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

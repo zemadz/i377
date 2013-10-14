@@ -36,7 +36,6 @@ public class SetupDao extends AbstractDao {
 		e.setPassword("");
 		e.setUrl(DB_URL);
 		e.execute();
-		closeResources();
 	}
 
 }
