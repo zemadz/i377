@@ -1,15 +1,18 @@
 package dao;
 
 import java.io.File;
-import java.sql.DatabaseMetaData;
-import java.sql.SQLException;
 
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.SQLExec;
 
 public class SetupDao extends AbstractDao {
 
+	private void dropSchema() {
+		executeQuery("DROP SCHEMA PUBLIC CASCADE;");
+	}
+
 	public void createSchema() {
+		dropSchema();
 		executeSqlFromFile(getClassPathFile("schema.sql"));
 	}
 

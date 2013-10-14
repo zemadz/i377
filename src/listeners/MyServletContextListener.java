@@ -12,14 +12,12 @@ import dao.SetupDao;
 
 public class MyServletContextListener implements javax.servlet.ServletContextListener {
 
+	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 
-		File dbFile = new File(System.getProperty("user.home"), "/i377/zemadz/db/db.script");
-		if (!dbFile.exists()) {
-			SetupDao setup = new SetupDao();
-			setup.createSchema();
-			setup.insertTestData();
-		}
+		SetupDao setup = new SetupDao();
+		setup.createSchema();
+		setup.insertTestData();
 		// File file = new File(System.getProperty("user.home"),
 		// "/i377/zemadz/db/db.script");
 		// if(!file.getAbsoluteFile().exists()) {
@@ -29,15 +27,16 @@ public class MyServletContextListener implements javax.servlet.ServletContextLis
 		// }
 	}
 
+	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
-		Enumeration<Driver> drivers = DriverManager.getDrivers();
-		while (drivers.hasMoreElements()) {
-			try {
-				DriverManager.deregisterDriver(drivers.nextElement());
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		// Enumeration<Driver> drivers = DriverManager.getDrivers();
+		// while (drivers.hasMoreElements()) {
+		// try {
+		// DriverManager.deregisterDriver(drivers.nextElement());
+		// } catch (SQLException e) {
+		// e.printStackTrace();
+		// }
+		// }
 	}
 
 }

@@ -23,6 +23,8 @@ public class UnitDao extends AbstractDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeResources();
 		}
 		return result;
 	}
@@ -72,6 +74,8 @@ public class UnitDao extends AbstractDao {
 			getConnection().createStatement().executeQuery("TRUNCATE SCHEMA public AND COMMIT");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeResources();
 		}
 	}
 
