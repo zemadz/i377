@@ -19,7 +19,7 @@
 		</fileset>
 	</path>
 
-	<target name="compile" depends="clean, init">
+	<target name="compile" depends="clean, init, retrieve">
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath refid="classpath" />
 		</javac>
