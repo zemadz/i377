@@ -15,9 +15,9 @@ public class MyServletContextListener implements javax.servlet.ServletContextLis
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 
-		SetupDao setup = new SetupDao();
-		setup.createSchema();
-		setup.insertTestData();
+//		SetupDao setup = new SetupDao();
+//		setup.createSchema();
+//		setup.insertTestData();
 		// File file = new File(System.getProperty("user.home"),
 		// "/i377/zemadz/db/db.script");
 		// if(!file.getAbsoluteFile().exists()) {
